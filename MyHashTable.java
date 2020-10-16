@@ -1,36 +1,52 @@
-// Java Program to illustrate reading from FileReader 
-// using BufferedReader 
-import java.io.*; 
+import java.util.Arrays;
+
 public class MyHashTable { 
+  private String[] keys;
+  private int[] values;
+  int m = 100;
 
-  public static int hash(String key, int tableSize)
-{
+  public MyHashTable(){
+    keys = new String[m];
+    values = new int[m];
+  }
+  public void getKeys(){
+    System.out.println(Arrays.toString(keys));
+  }
+  private int hash(String key){
+    return hash(key, m);
+  }
+  // used horners rule to hash the strings
+  public static int hash(String key, int tableSize){
     int hashVal = 0;
-
-    for (int i = 0; i < key.length(); i++)
-         hashVal = 7 * hashVal + key.charAt(i);
-
+    for (int i = 0; i < key.length(); i++){hashVal = 7 * hashVal + key.charAt(i);}
     hashVal %= tableSize;
-    if (hashVal < 0)
-         hashVal += tableSize;
-
+    if (hashVal < 0){hashVal += tableSize;}
     return hashVal;
+  }
+
+  public void put(String key,int val) {
+    // double table size if 50% full
+    // if (n >= m/2) resize(2*m);
+    int i;
+    for (i = hash(key); keys[i] != null; i = (i + 1) % m) {
+        if (keys[i].equals(key)) {
+            values[i] = val;
+            return;
+        }
+    }
+    keys[i] = key;
+    values[i] = val;
 }
+
+
+
   public static void main(String[] args)throws Exception { 
-    // We need to provide file path as the parameter: 
-    // double backquote is to avoid compiler interpret words 
-    // like \test as \t (ie. as a escape sequence) 
-    File file = new File("C:\\Users\\Brandon Salazar\\Desktop\\dictionary.txt"); 
-    
-    BufferedReader br = new BufferedReader(new FileReader(file)); 
-    
-    String st; 
-    int count = 0;
-    while ((st = br.readLine()) != null){
-        count++;    
-    } 
-    System.out.println(count);
-    System.out.println(hash("abc", 10000));
+    MyHashTable ht = new MyHashTable(); 
+    // table size is 109616
+    ht.put("a", 1);
+    ht.put("da", 1);
+    ht.getKeys();
+
   } 
 }
 

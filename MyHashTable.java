@@ -2,6 +2,20 @@
 // using BufferedReader 
 import java.io.*; 
 public class MyHashTable { 
+
+  public static int hash(String key, int tableSize)
+{
+    int hashVal = 0;
+
+    for (int i = 0; i < key.length(); i++)
+         hashVal = 7 * hashVal + key.charAt(i);
+
+    hashVal %= tableSize;
+    if (hashVal < 0)
+         hashVal += tableSize;
+
+    return hashVal;
+}
   public static void main(String[] args)throws Exception { 
     // We need to provide file path as the parameter: 
     // double backquote is to avoid compiler interpret words 
@@ -16,6 +30,7 @@ public class MyHashTable {
         count++;    
     } 
     System.out.println(count);
+    System.out.println(hash("abc", 10000));
   } 
 }
 

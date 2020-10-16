@@ -3,13 +3,26 @@ import java.util.Arrays;
 public class MyHashTable { 
   private String[] keys;
   private int[] values;
-  private int m = 100; // size of table
+  private int m = 100; // size of table, since the table size is 109,616 then I will set the table size to (4/3) * 109, 616
   private int n;  // number of key-value pairs in the symbol table
 
   public MyHashTable(){
     n = 0;
     keys = new String[m];
     values = new int[m];
+  }
+
+  public int get(String key){
+    for (int i = hash(key); keys[i] != null; i = (i + 1) % m){
+        if (keys[i].equals(key)){
+            return values[i];
+        }
+    }
+    return -1;
+  }
+
+  public boolean contains(String key){
+    return get(key) != -1;
   }
 
   public int size(){
@@ -56,11 +69,12 @@ public class MyHashTable {
     MyHashTable ht = new MyHashTable(); 
     // table size is 109616
     ht.put("a", 1);
-    ht.put("d", 1);
-    ht.put("da", 1);
+    ht.put("d", 2);
+    ht.put("da", 3);
     System.out.println(ht.size());
     // System.out.println(ht.isEmpty());
     ht.getKeys();
+    System.out.println(ht.get("d"));
 
   } 
 }

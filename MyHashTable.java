@@ -3,18 +3,29 @@ import java.util.Arrays;
 public class MyHashTable { 
   private String[] keys;
   private int[] values;
-  int m = 100;
+  private int m = 100; // size of table
+  private int n;  // number of key-value pairs in the symbol table
 
   public MyHashTable(){
+    n = 0;
     keys = new String[m];
     values = new int[m];
   }
+
+  public int size(){
+    return n;
+  }
+  public boolean isEmpty(){
+    return n == 0;
+  }
+
   public void getKeys(){
     System.out.println(Arrays.toString(keys));
   }
   private int hash(String key){
     return hash(key, m);
   }
+
   // used horners rule to hash the strings
   public static int hash(String key, int tableSize){
     int hashVal = 0;
@@ -36,6 +47,7 @@ public class MyHashTable {
     }
     keys[i] = key;
     values[i] = val;
+    n++;
 }
 
 
@@ -44,7 +56,10 @@ public class MyHashTable {
     MyHashTable ht = new MyHashTable(); 
     // table size is 109616
     ht.put("a", 1);
+    ht.put("d", 1);
     ht.put("da", 1);
+    System.out.println(ht.size());
+    // System.out.println(ht.isEmpty());
     ht.getKeys();
 
   } 

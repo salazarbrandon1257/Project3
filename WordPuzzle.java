@@ -2,12 +2,18 @@ import java.io.*;
 
 public class WordPuzzle {
   String[][] array;
-  public WordPuzzle(int size){
-    array = new String[size][size];
+  int size;
+
+  public WordPuzzle(int inputSize){
+    this.size = inputSize;
+    array = new String[inputSize][inputSize];
+    populateArray();
   }
 
-  public void check(String[][] arr){
+  public void populateArray(){
+  }
 
+  public void check(){
   }
 
 
@@ -19,6 +25,8 @@ public class WordPuzzle {
     int maxLength = 0;
     String maxWord = "";
     MyHashTable ht = new MyHashTable(); 
+    WordPuzzle puzz = new WordPuzzle(4);
+
     while ((st = br.readLine()) != null){
         tableSize++; 
         ht.put(st, 1);

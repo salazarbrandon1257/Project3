@@ -8,9 +8,10 @@ public class WordPuzzle {
     int tableSize = 0;
     int maxLength = 0;
     String maxWord = "";
-    while ((st = br.readLine()) != null){
+    MyHashTable ht = new MyHashTable(); 
+    while ((st = br.readLine()) != null && tableSize < 10){
         tableSize++; 
-        // System.out.println(st); 
+        ht.put(st, 1);
         if (st.length() > maxLength){
           maxLength = st.length();
           maxWord = st;
@@ -23,5 +24,7 @@ public class WordPuzzle {
     System.out.println(maxLength);
     System.out.print("maxWord: ");
     System.out.println(maxWord);
+    System.out.println(ht.contains("a"));
+    
   } 
 }

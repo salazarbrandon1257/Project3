@@ -4,12 +4,14 @@ import java.util.Random;
 
 
 public class WordPuzzle {
+  MyHashTable ht; 
   char[][] array;
   int size;
 
-  public WordPuzzle(int inputSize){
+  public WordPuzzle(int inputSize, MyHashTable hTable){
     this.size = inputSize;
     array = new char[inputSize][inputSize];
+    ht = hTable;
     populateArray();
   }
 
@@ -22,14 +24,24 @@ public class WordPuzzle {
         System.out.print(",");
         System.out.print(j);
         System.out.print(":");
-        System.out.println(array[i][j]);
+        System.out.print(array[i][j]);
+        System.out.print(" ");
+        if (j == size - 1){
+          System.out.println("");
+        }
       }
     }
   }
 
   public void check(){
+    String st;
+    for (int i = 0; i < size; i++){
+      for (int j = 0; j < size; j++){
+        st = "";
+        while( )
+      }
+    }
   }
-
 
     public static void main(String[] args)throws Exception { 
     File file = new File("C:\\Users\\Brandon Salazar\\Desktop\\dictionary.txt"); 
@@ -39,8 +51,6 @@ public class WordPuzzle {
     int maxLength = 0;
     String maxWord = "";
     MyHashTable ht = new MyHashTable(); 
-    WordPuzzle puzz = new WordPuzzle(4);
-    
     while ((st = br.readLine()) != null){
         tableSize++; 
         ht.put(st, 1);
@@ -48,7 +58,10 @@ public class WordPuzzle {
           maxLength = st.length();
           maxWord = st;
         }
-    } 
+    }
+    WordPuzzle puzz = new WordPuzzle(4, ht);
+    
+    
     // table size is 109616
     System.out.print("Tablesize: ");
     System.out.println(tableSize);
@@ -57,7 +70,5 @@ public class WordPuzzle {
     System.out.print("maxWord: ");
     System.out.println(maxWord);
     System.out.println(ht.contains("zebra"));
-
-    
   } 
 }

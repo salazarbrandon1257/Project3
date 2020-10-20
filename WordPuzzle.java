@@ -32,7 +32,7 @@ public class WordPuzzle {
   public void rightCheck(char[][] arr, int i, int j){
     String st = "";
     int k = j;
-    while(k < size){
+    while(k < size && st.length() < 29){
       st += arr[i][k];
       k++;
       if (ht.contains(st)){
@@ -43,7 +43,7 @@ public class WordPuzzle {
   public void leftCheck(char[][] arr, int i, int j){
     String st = "";
     int k = j;
-    while(k > -1){
+    while(k > -1 && st.length() < 29){
       st += arr[i][k];
       k--;
       if (ht.contains(st) && st.length()!= 1){
@@ -54,7 +54,7 @@ public class WordPuzzle {
   public void downCheck(char[][] arr, int i, int j){
     String st = "";
     int k = i;
-    while(k < size){
+    while(k < size && st.length() < 29){
       st += arr[k][j];
       k++;
       if (ht.contains(st) && st.length()!= 1){
@@ -65,7 +65,7 @@ public class WordPuzzle {
   public void upCheck(char[][] arr, int i, int j){
     String st = "";
     int k = i;
-    while(k > -1){
+    while(k > -1 && st.length() < 29){
       st += arr[k][j];
       k--;
       if (ht.contains(st) && st.length()!= 1){
@@ -78,7 +78,7 @@ public class WordPuzzle {
     String st = "";
     int l = i;
     int k = j;
-    while(k < size && l < size){
+    while(k < size && l < size && st.length() < 29){
       st += arr[l][k];
       k++;
       l++;
@@ -91,7 +91,7 @@ public class WordPuzzle {
     String st = "";
     int l = i;
     int k = j;
-    while(k < size && l > -1){
+    while(k < size && l > -1 && st.length() < 29){
       st += arr[l][k];
       k++;
       l--;
@@ -104,7 +104,7 @@ public class WordPuzzle {
     String st = "";
     int l = i;
     int k = j;
-    while(k > -1 && l < size){
+    while(k > -1 && l < size && st.length() < 29){
       st += arr[l][k];
       k--;
       l++;
@@ -117,7 +117,7 @@ public class WordPuzzle {
     String st = "";
     int l = i;
     int k = j;
-    while(l > -1 && k > -1){
+    while(l > -1 && k > -1 && st.length() < 29){
       st += arr[l][k];
       k--;
       l--;
@@ -147,28 +147,27 @@ public class WordPuzzle {
     File file = new File("C:\\Users\\Brandon Salazar\\Desktop\\dictionary.txt"); 
     BufferedReader br = new BufferedReader(new FileReader(file)); 
     String st; 
-    int tableSize = 0;
-    int maxLength = 0;
-    String maxWord = "";
+    // int tableSize = 0;
+    // int maxLength = 0;
+    // String maxWord = "";
     MyHashTable ht = new MyHashTable(); 
     while ((st = br.readLine()) != null){
-        tableSize++; 
+        // tableSize++; 
+        // to find table size
         ht.put(st, 1);
-        if (st.length() > maxLength){
-          maxLength = st.length();
-          maxWord = st;
-        }
+        //if (st.length() > maxLength){
+        // maxLength = st.length();
+        // maxWord = st;
+        //}
+        // to find the word with the max length
     }
     WordPuzzle puzz = new WordPuzzle(20, ht);
     puzz.check();
     
     // table size is 109616
-    // System.out.print("Tablesize: ");
-    // System.out.println(tableSize);
-    System.out.print("maxLength: ");
-    System.out.println(maxLength);
+    // System.out.print("maxLength: ");
+    // System.out.println(maxLength);
     // System.out.print("maxWord: ");
     // System.out.println(maxWord);
-    // System.out.println(ht.contains("zebra"));
   } 
 }

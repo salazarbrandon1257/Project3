@@ -87,6 +87,45 @@ public class WordPuzzle {
       }
     }
   }
+  public void upRightCheck(char[][] arr, int i, int j){
+    String st = "";
+    int l = i;
+    int k = j;
+    while(k < size && l > -1){
+      st += arr[l][k];
+      k++;
+      l--;
+      if (ht.contains(st) && st.length()!= 1){
+        System.out.println(st);
+      }
+    }
+  }
+  public void downLeftCheck(char[][] arr, int i, int j){
+    String st = "";
+    int l = i;
+    int k = j;
+    while(k > -1 && l < size){
+      st += arr[l][k];
+      k--;
+      l++;
+      if (ht.contains(st) && st.length()!= 1){
+        System.out.println(st);
+      }
+    }
+  }
+  public void upLeftCheck(char[][] arr, int i, int j){
+    String st = "";
+    int l = i;
+    int k = j;
+    while(l > -1 && k > -1){
+      st += arr[l][k];
+      k--;
+      l--;
+      if (ht.contains(st) && st.length()!= 1){
+        System.out.println(st);
+      }
+    }
+  }
 
   public void check(){
     for (int i = 0; i < size; i++){
@@ -95,7 +134,11 @@ public class WordPuzzle {
         leftCheck(array, i, j);
         upCheck(array, i, j);
         downCheck(array, i, j);
-        // downRightCheck(array, i, j);
+
+        downRightCheck(array, i, j);
+        upRightCheck(array, i, j);
+        upLeftCheck(array, i, j);
+        downLeftCheck(array, i, j);
       }
     }
   }
@@ -116,14 +159,14 @@ public class WordPuzzle {
           maxWord = st;
         }
     }
-    WordPuzzle puzz = new WordPuzzle(10, ht);
+    WordPuzzle puzz = new WordPuzzle(20, ht);
     puzz.check();
     
     // table size is 109616
     // System.out.print("Tablesize: ");
     // System.out.println(tableSize);
-    // System.out.print("maxLength: ");
-    // System.out.println(maxLength);
+    System.out.print("maxLength: ");
+    System.out.println(maxLength);
     // System.out.print("maxWord: ");
     // System.out.println(maxWord);
     // System.out.println(ht.contains("zebra"));

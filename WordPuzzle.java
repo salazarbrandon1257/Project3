@@ -20,10 +20,6 @@ public class WordPuzzle {
     for (int i = 0; i < size; i++){
       for (int j = 0; j < size; j++){
         array[i][j] = (char) (r.nextInt(26) + 'a');
-        System.out.print(i);
-        System.out.print(",");
-        System.out.print(j);
-        System.out.print(":");
         System.out.print(array[i][j]);
         System.out.print(" ");
         if (j == size - 1){
@@ -33,20 +29,45 @@ public class WordPuzzle {
     }
   }
 
+  public void rightCheck(char[][] arr, int i, int j){
+    String st = "";
+    int k = j;
+    while(k < size){
+      st += arr[i][k];
+      k++;
+      if (ht.contains(st)){
+        System.out.println(st);
+      }
+    }
+  }
+  public void leftCheck(char[][] arr, int i, int j){
+    String st = "";
+    int k = j;
+    while(k > -1){
+      st += arr[i][k];
+      k--;
+      if (ht.contains(st)){
+        System.out.println(st);
+      }
+    }
+  }
+  public void rightLeftCheck(char[][] arr, int i, int j){
+    String st = "";
+    int k = j;
+    while(k > -1){
+      st += arr[i][k];
+      k--;
+      if (ht.contains(st)){
+        System.out.println(st);
+      }
+    }
+  }
+
   public void check(){
-    String st;
     for (int i = 0; i < size; i++){
       for (int j = 0; j < size; j++){
-        st = "";
-        int k = j;
-        while(k < size){
-          st += array[i][k];
-          k++;
-        }
-        if (ht.contains(st)){
-          System.out.println(st);
-        }
-
+        rightCheck(array, i, j);
+        leftCheck(array, i, j);
       }
     }
   }

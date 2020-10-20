@@ -38,7 +38,15 @@ public class WordPuzzle {
     for (int i = 0; i < size; i++){
       for (int j = 0; j < size; j++){
         st = "";
-        while( )
+        int k = j;
+        while(k < size){
+          st += array[i][k];
+          k++;
+        }
+        if (ht.contains(st)){
+          System.out.println(st);
+        }
+
       }
     }
   }
@@ -60,15 +68,15 @@ public class WordPuzzle {
         }
     }
     WordPuzzle puzz = new WordPuzzle(4, ht);
-    
+    puzz.check();
     
     // table size is 109616
-    System.out.print("Tablesize: ");
-    System.out.println(tableSize);
-    System.out.print("maxLength: ");
-    System.out.println(maxLength);
-    System.out.print("maxWord: ");
-    System.out.println(maxWord);
-    System.out.println(ht.contains("zebra"));
+    // System.out.print("Tablesize: ");
+    // System.out.println(tableSize);
+    // System.out.print("maxLength: ");
+    // System.out.println(maxLength);
+    // System.out.print("maxWord: ");
+    // System.out.println(maxWord);
+    // System.out.println(ht.contains("zebra"));
   } 
 }

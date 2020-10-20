@@ -51,13 +51,38 @@ public class WordPuzzle {
       }
     }
   }
-  public void rightLeftCheck(char[][] arr, int i, int j){
+  public void downCheck(char[][] arr, int i, int j){
     String st = "";
-    int k = j;
+    int k = i;
+    while(k < size){
+      st += arr[k][j];
+      k++;
+      if (ht.contains(st) && st.length()!= 1){
+        System.out.println(st);
+      }
+    }
+  }
+  public void upCheck(char[][] arr, int i, int j){
+    String st = "";
+    int k = i;
     while(k > -1){
-      st += arr[i][k];
+      st += arr[k][j];
       k--;
-      if (ht.contains(st)){
+      if (ht.contains(st) && st.length()!= 1){
+        System.out.println(st);
+      }
+    }
+  }
+  
+  public void downRightCheck(char[][] arr, int i, int j){
+    String st = "";
+    int l = i;
+    int k = j;
+    while(k < size && l < size){
+      st += arr[l][k];
+      k++;
+      l++;
+      if (ht.contains(st) && st.length()!= 1){
         System.out.println(st);
       }
     }
@@ -68,6 +93,9 @@ public class WordPuzzle {
       for (int j = 0; j < size; j++){
         rightCheck(array, i, j);
         leftCheck(array, i, j);
+        upCheck(array, i, j);
+        downCheck(array, i, j);
+        // downRightCheck(array, i, j);
       }
     }
   }
@@ -88,7 +116,7 @@ public class WordPuzzle {
           maxWord = st;
         }
     }
-    WordPuzzle puzz = new WordPuzzle(4, ht);
+    WordPuzzle puzz = new WordPuzzle(10, ht);
     puzz.check();
     
     // table size is 109616

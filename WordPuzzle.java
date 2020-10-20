@@ -46,7 +46,7 @@ public class WordPuzzle {
     while(k > -1){
       st += arr[i][k];
       k--;
-      if (ht.contains(st)){
+      if (ht.contains(st) && st.length()!= 1){
         System.out.println(st);
       }
     }

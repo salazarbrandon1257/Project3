@@ -25,10 +25,10 @@ public class WordPuzzle {
     for (int i = 0; i < size; i++){
       for (int j = 0; j < size; j++){
         array[i][j] = (char) (r.nextInt(26) + 'a');
-        System.out.print(array[i][j]);
-        System.out.print(" ");
+        //System.out.print(array[i][j]);
+        //System.out.print(" ");
         if (j == size - 1){
-          System.out.println("");
+          //System.out.println("");
         }
       }
     }
@@ -41,7 +41,7 @@ public class WordPuzzle {
       st += arr[i][k];
       k++;
       if (ht.contains(st)){
-        System.out.println(st);
+        //System.out.println(st);
       }
     }
   }
@@ -52,7 +52,7 @@ public class WordPuzzle {
       st += arr[i][k];
       k--;
       if (ht.contains(st) && st.length()!= 1){
-        System.out.println(st);
+        //System.out.println(st);
       }
       if(prefixHt.size() > 0){
         if(!prefixHt.contains(st)){
@@ -69,7 +69,7 @@ public class WordPuzzle {
       st += arr[k][j];
       k++;
       if (ht.contains(st) && st.length()!= 1){
-        System.out.println(st);
+        //System.out.println(st);
       }
       if(prefixHt.size() > 0){
         if(!prefixHt.contains(st)){
@@ -85,7 +85,7 @@ public class WordPuzzle {
       st += arr[k][j];
       k--;
       if (ht.contains(st) && st.length()!= 1){
-        System.out.println(st);
+        //System.out.println(st);
       }
       if(prefixHt.size() > 0){
         if(!prefixHt.contains(st)){
@@ -104,7 +104,7 @@ public class WordPuzzle {
       k++;
       l++;
       if (ht.contains(st) && st.length()!= 1){
-        System.out.println(st);
+        //System.out.println(st);
       }
       if(prefixHt.size() > 0){
         if(!prefixHt.contains(st)){
@@ -122,7 +122,7 @@ public class WordPuzzle {
       k++;
       l--;
       if (ht.contains(st) && st.length()!= 1){
-        System.out.println(st);
+       // System.out.println(st);
       }
       if(prefixHt.size() > 0){
         if(!prefixHt.contains(st)){
@@ -140,7 +140,7 @@ public class WordPuzzle {
       k--;
       l++;
       if (ht.contains(st) && st.length()!= 1){
-        System.out.println(st);
+      //  System.out.println(st);
       }
       if(prefixHt.size() > 0){
         if(!prefixHt.contains(st)){
@@ -158,7 +158,7 @@ public class WordPuzzle {
       k--;
       l--;
       if (ht.contains(st) && st.length()!= 1){
-        System.out.println(st);
+       // System.out.println(st);
       }
       if(prefixHt.size() > 0){
         if(!prefixHt.contains(st)){

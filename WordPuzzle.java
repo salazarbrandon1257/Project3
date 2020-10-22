@@ -125,6 +125,7 @@ public class WordPuzzle {
       if (ht.contains(st) && st.length()!= 1){
         System.out.println(st);
       }
+      if()
     }
   }
 
@@ -151,17 +152,28 @@ public class WordPuzzle {
     Scanner myObj = new Scanner(System.in);  // Create a Scanner object
     System.out.println("Input a value for the table size(Integer < 20): ");
     String userInput = myObj.nextLine();  // Read user input
-
+    Scanner myObj2 = new Scanner(System.in);  // Create a Scanner object
+    System.out.println("Use enhancement? (Y/N): ");
+    String userInput2 = myObj2.nextLine();  // Read user input
     // int tableSize = 0;
     // int maxLength = 0;
     // String maxWord = "";
     MyHashTable ht = new MyHashTable(); 
     MyHashTable prefixTable = new MyHashTable();
-    prefixTable.setTableSize(prefixTable.getTableSize() * 7);
-    System.out.println(prefixTable.getTableSize());
+    if (userInput2.equals("Y") || userInput2.equals("y") ){
+      prefixTable.setTableSize(prefixTable.getTableSize() * 7);
+    }
+    // prefix tableSize is 1023085
+
     while ((st = br.readLine()) != null){
         // tableSize++; 
         // to find table size
+        if (userInput2.equals("Y") || userInput2.equals("y") ){
+          for(int i = 0; i < st.length() - 1; i++){
+            prefixTable.put(st.substring(0, i), 1);
+          }
+        }
+
         ht.put(st, 1);
         //if (st.length() > maxLength){
         // maxLength = st.length();
@@ -169,7 +181,6 @@ public class WordPuzzle {
         //}
         // to find the word with the max length
     }
-    
     WordPuzzle puzz = new WordPuzzle(Integer.valueOf(userInput), ht);
     puzz.check();
     

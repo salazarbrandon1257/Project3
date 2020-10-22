@@ -1,4 +1,6 @@
 import java.io.*;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
@@ -6,13 +8,15 @@ import java.util.Scanner;
 
 public class WordPuzzle {
   MyHashTable ht; 
+  MyHashTable prefixHt;
   char[][] array;
   int size;
 
-  public WordPuzzle(int inputSize, MyHashTable hTable){
+  public WordPuzzle(int inputSize, MyHashTable hTable, MyHashTable prefixTable){
     this.size = inputSize;
     array = new char[inputSize][inputSize];
     ht = hTable;
+    prefixHt = prefixTable;
     populateArray();
   }
 
@@ -50,6 +54,12 @@ public class WordPuzzle {
       if (ht.contains(st) && st.length()!= 1){
         System.out.println(st);
       }
+      if(prefixHt.size() > 0){
+        if(!prefixHt.contains(st)){
+          break;
+        }
+      }
+
     }
   }
   public void downCheck(char[][] arr, int i, int j){
@@ -61,6 +71,11 @@ public class WordPuzzle {
       if (ht.contains(st) && st.length()!= 1){
         System.out.println(st);
       }
+      if(prefixHt.size() > 0){
+        if(!prefixHt.contains(st)){
+          break;
+        }
+      }
     }
   }
   public void upCheck(char[][] arr, int i, int j){
@@ -71,6 +86,11 @@ public class WordPuzzle {
       k--;
       if (ht.contains(st) && st.length()!= 1){
         System.out.println(st);
+      }
+      if(prefixHt.size() > 0){
+        if(!prefixHt.contains(st)){
+          break;
+        }
       }
     }
   }
@@ -86,6 +106,11 @@ public class WordPuzzle {
       if (ht.contains(st) && st.length()!= 1){
         System.out.println(st);
       }
+      if(prefixHt.size() > 0){
+        if(!prefixHt.contains(st)){
+          break;
+        }
+      }
     }
   }
   public void upRightCheck(char[][] arr, int i, int j){
@@ -98,6 +123,11 @@ public class WordPuzzle {
       l--;
       if (ht.contains(st) && st.length()!= 1){
         System.out.println(st);
+      }
+      if(prefixHt.size() > 0){
+        if(!prefixHt.contains(st)){
+          break;
+        }
       }
     }
   }
@@ -112,6 +142,11 @@ public class WordPuzzle {
       if (ht.contains(st) && st.length()!= 1){
         System.out.println(st);
       }
+      if(prefixHt.size() > 0){
+        if(!prefixHt.contains(st)){
+          break;
+        }
+      }
     }
   }
   public void upLeftCheck(char[][] arr, int i, int j){
@@ -125,7 +160,11 @@ public class WordPuzzle {
       if (ht.contains(st) && st.length()!= 1){
         System.out.println(st);
       }
-      if()
+      if(prefixHt.size() > 0){
+        if(!prefixHt.contains(st)){
+          break;
+        }
+      }
     }
   }
 
@@ -161,9 +200,10 @@ public class WordPuzzle {
     MyHashTable ht = new MyHashTable(); 
     MyHashTable prefixTable = new MyHashTable();
     if (userInput2.equals("Y") || userInput2.equals("y") ){
-      prefixTable.setTableSize(prefixTable.getTableSize() * 7);
+      prefixTable.setTableSize(prefixTable.getTableSize() * 2);
     }
     // prefix tableSize is 1023085
+    Instant start = Instant.now();
 
     while ((st = br.readLine()) != null){
         // tableSize++; 
@@ -181,9 +221,16 @@ public class WordPuzzle {
         //}
         // to find the word with the max length
     }
-    WordPuzzle puzz = new WordPuzzle(Integer.valueOf(userInput), ht);
+    WordPuzzle puzz = new WordPuzzle(Integer.valueOf(userInput), ht, prefixTable);
     puzz.check();
+    System.out.println(prefixTable.size());
+    System.out.println(ht.size());
     
     // table size is 109616
+
+    // time passes      
+    Instant end = Instant.now();
+    Duration timeElapsed = Duration.between(start, end);
+    System.out.println(timeElapsed);
   } 
 }

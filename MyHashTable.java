@@ -3,13 +3,20 @@ import java.util.Arrays;
 public class MyHashTable { 
   private String[] keys;
   private int[] values;
-  private int m = 100; // size of table, since the table size is 109,616 then I will set the table size to (4/3) * 109, 616
-  private int n;  // number of key-value pairs in the symbol table
+  private int m; // size of table, since the table size is 109,616 then I will set the table size to (4/3) * 109,616
+  private int n; // number of key-value pairs in the symbol table
 
   public MyHashTable(){
     n = 0;
+    m = 146155; 
     keys = new String[m];
     values = new int[m];
+  }
+  public void setTableSize(int k){
+    this.m = k;
+  }
+  public int getTableSize(){
+    return m;
   }
 
   public int get(String key){

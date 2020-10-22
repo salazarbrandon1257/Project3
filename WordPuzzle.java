@@ -1,6 +1,7 @@
 import java.io.*;
 import java.util.Arrays;
 import java.util.Random;
+import java.util.Scanner;
 
 
 public class WordPuzzle {
@@ -147,10 +148,17 @@ public class WordPuzzle {
     File file = new File("C:\\Users\\Brandon Salazar\\Desktop\\dictionary.txt"); 
     BufferedReader br = new BufferedReader(new FileReader(file)); 
     String st; 
+    Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+    System.out.println("Input a value for the table size(Integer < 20): ");
+    String userInput = myObj.nextLine();  // Read user input
+
     // int tableSize = 0;
     // int maxLength = 0;
     // String maxWord = "";
     MyHashTable ht = new MyHashTable(); 
+    MyHashTable prefixTable = new MyHashTable();
+    prefixTable.setTableSize(prefixTable.getTableSize() * 7);
+    System.out.println(prefixTable.getTableSize());
     while ((st = br.readLine()) != null){
         // tableSize++; 
         // to find table size
@@ -161,13 +169,10 @@ public class WordPuzzle {
         //}
         // to find the word with the max length
     }
-    WordPuzzle puzz = new WordPuzzle(20, ht);
+    
+    WordPuzzle puzz = new WordPuzzle(Integer.valueOf(userInput), ht);
     puzz.check();
     
     // table size is 109616
-    // System.out.print("maxLength: ");
-    // System.out.println(maxLength);
-    // System.out.print("maxWord: ");
-    // System.out.println(maxWord);
   } 
 }

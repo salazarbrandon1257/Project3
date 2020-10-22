@@ -14,6 +14,8 @@ public class MyHashTable {
   }
   public void setTableSize(int k){
     this.m = k;
+    this.keys = new String[k];
+    this.values = new int[k];
   }
   public int getTableSize(){
     return m;
@@ -73,16 +75,6 @@ public class MyHashTable {
 
 
   public static void main(String[] args)throws Exception { 
-    MyHashTable ht = new MyHashTable(); 
-    // table size is 109616
-    ht.put("a", 1);
-    ht.put("d", 2);
-    ht.put("da", 3);
-    System.out.println(ht.size());
-    // System.out.println(ht.isEmpty());
-    ht.getKeys();
-    System.out.println(ht.get("d"));
-
   } 
 }
 
